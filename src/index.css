@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 20% 7%;
+    --foreground: 0 0% 100%;
+
+    --card: 222 22% 16%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 222 22% 16%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 165 100% 42%;
+    --primary-foreground: 222 20% 7%;
+
+    --secondary: 222 22% 16%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 222 22% 16%;
+    --muted-foreground: 215 23% 62%;
+
+    --accent: 165 100% 42%;
+    --accent-foreground: 222 20% 7%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217 19% 27%;
+    --input: 217 19% 27%;
+    --ring: 165 100% 42%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 222 20% 7%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 165 100% 42%;
+    --sidebar-primary-foreground: 222 20% 7%;
+    --sidebar-accent: 222 22% 16%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 217 19% 27%;
+    --sidebar-ring: 165 100% 42%;
+
+    /* Custom tokens */
+    --glow-primary: 0 0 30px hsl(165 100% 42% / 0.3);
+    --surface-elevated: 222 25% 12%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .section-divider {
+    @apply w-full h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent;
+  }
+
+  .card-glow {
+    @apply transition-all duration-300;
+  }
+  .card-glow:hover {
+    box-shadow: 0 0 30px hsl(165 100% 42% / 0.15), 0 0 60px hsl(165 100% 42% / 0.05);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-emerald-300;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_hsl(165_100%_42%/0.4)] hover:scale-105;
+  }
+
+  .btn-outline {
+    @apply border border-primary text-primary font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:bg-primary/10 hover:scale-105;
+  }
+
+  .label-caps {
+    @apply font-mono text-xs tracking-[0.2em] uppercase text-primary;
+  }
+}
+
+@layer utilities {
+  .grid-bg {
+    background-image: 
+      linear-gradient(hsl(165 100% 42% / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(165 100% 42% / 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+}
