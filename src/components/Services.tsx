@@ -11,7 +11,7 @@ const Services = () => {
     { nameKey: "services.p3.name", priceKey: "services.p3.price", itemsKey: "services.p3.items", featured: false },
   ];
 
-  const whatsappUrl = "https://wa.me/5493513456789?text=Hola%20Mafe,%20me%20interesa%20un%20servicio";
+  const whatsappUrl = "https://wa.me/543512005107?text=Hola%20Mafe,%20me%20interesa%20un%20servicio";
 
   return (
     <section id="servicios" className="py-24 md:py-32">
@@ -40,7 +40,6 @@ const Services = () => {
                   </div>
                 )}
                 <h3 className="text-xl font-bold text-foreground mb-2 font-sans">{t(pkg.nameKey)}</h3>
-                <p className="text-2xl font-bold text-primary mb-6 font-sans">{t(pkg.priceKey)}</p>
                 <ul className="flex-1 space-y-3 mb-8">
                   {t(pkg.itemsKey)
                     .split("|")

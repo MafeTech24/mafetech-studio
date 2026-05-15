@@ -87,7 +87,7 @@ const Contact = () => {
 
               <div className="space-y-4">
                 <a
-                  href="https://wa.me/5493513456789"
+                  href="https://wa.me/543512005107"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-foreground hover:text-primary transition-colors font-sans text-sm"

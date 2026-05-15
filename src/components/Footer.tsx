@@ -59,7 +59,7 @@ const Footer = () => {
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="GitHub">
                 <Github size={18} />
               </a>
-              <a href="https://wa.me/5493513456789" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="WhatsApp">
+              <a href="https://wa.me/543512005107" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="WhatsApp">
                 <MessageSquare size={18} />
               </a>
             </div>

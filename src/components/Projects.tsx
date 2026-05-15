@@ -1,54 +1,308 @@
-import { ArrowRight } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLink, Github, FileText, X, Star, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import ScrollAnimation from "./ScrollAnimation";
+import { projects, type ProjectCategory } from "@/data/projects";
 
-const projectData = [
-  { nameKey: "projects.p1.name", catKey: "projects.p1.category", resultKey: "projects.p1.result", color: "from-primary/20 to-emerald-500/10" },
-  { nameKey: "projects.p2.name", catKey: "projects.p2.category", resultKey: "projects.p2.result", color: "from-cyan-500/20 to-primary/10" },
-  { nameKey: "projects.p3.name", catKey: "projects.p3.category", resultKey: "projects.p3.result", color: "from-teal-500/20 to-primary/10" },
-  { nameKey: "projects.p4.name", catKey: "projects.p4.category", resultKey: "projects.p4.result", color: "from-emerald-500/20 to-cyan-500/10" },
+const CATEGORIES: { label: string; value: ProjectCategory | "Todos" }[] = [
+  { label: "Todos", value: "Todos" },
+  { label: "Automatización", value: "Automatización" },
+  { label: "Desarrollo Web", value: "Desarrollo Web" },
+  { label: "E-commerce", value: "E-commerce" },
 ];
+
+const categoryColor: Record<ProjectCategory, string> = {
+  "Automatización": "bg-primary/20 text-primary border-primary/30",
+  "Desarrollo Web": "bg-cyan-500/20 text-cyan-400 border-cyan-500/30",
+  "E-commerce": "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
+};
 
 const Projects = () => {
   const { t } = useLanguage();
+  const [active, setActive] = useState<"Todos" | ProjectCategory>("Todos");
+  const [selected, setSelected] = useState<(typeof projects)[0] | null>(null);
+
+  const filtered =
+    active === "Todos" ? projects : projects.filter((p) => p.category === active);
 
   return (
     <section id="proyectos" className="py-24 md:py-32">
       <div className="container mx-auto px-4 md:px-8">
+        {/* Title */}
         <ScrollAnimation>
-          <h2 className="text-3xl md:text-5xl font-bold text-center text-foreground mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-center text-foreground mb-4">
             {t("projects.title")}
           </h2>
+          <p className="text-center text-muted-foreground font-sans mb-12 max-w-xl mx-auto text-sm">
+            {filtered.length} proyecto{filtered.length !== 1 ? "s" : ""} · {active === "Todos" ? "todas las categorías" : active}
+          </p>
         </ScrollAnimation>
 
-        <div className="grid sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          {projectData.map((project, i) => (
-            <ScrollAnimation key={project.nameKey} delay={i * 0.1}>
-              <div className="group card-glow bg-card border border-border rounded-xl overflow-hidden h-full">
-                <div className={`h-40 bg-gradient-to-br ${project.color} flex items-center justify-center relative`}>
-                  <span className="text-3xl font-bold text-foreground/80 font-serif">{t(project.nameKey)}</span>
-                  <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300" />
-                </div>
-                <div className="p-6">
-                  <span className="label-caps text-[10px]">{t(project.catKey)}</span>
-                  <p className="text-muted-foreground text-sm mt-2 font-sans">{t(project.resultKey)}</p>
-                </div>
-              </div>
-            </ScrollAnimation>
-          ))}
-        </div>
-
-        <ScrollAnimation delay={0.3}>
-          <div className="text-center mt-12">
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 text-primary font-sans font-medium text-sm hover:gap-3 transition-all"
-            >
-              {t("projects.all")} <ArrowRight size={16} />
-            </a>
+        {/* Filter tabs */}
+        <ScrollAnimation delay={0.1}>
+          <div className="flex flex-wrap justify-center gap-2 mb-12">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat.value}
+                onClick={() => setActive(cat.value)}
+                className={`px-5 py-2 rounded-full text-sm font-sans font-medium border transition-all duration-200 ${
+                  active === cat.value
+                    ? "bg-primary text-primary-foreground border-primary shadow-[0_0_16px_hsl(165_100%_42%/0.35)]"
+                    : "bg-card border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
           </div>
         </ScrollAnimation>
+
+        {/* Grid */}
+        <motion.div
+          layout
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-7xl mx-auto"
+        >
+          <AnimatePresence mode="popLayout">
+            {filtered.map((project, i) => (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.25, delay: i * 0.04 }}
+                onClick={() => setSelected(project)}
+                className="group relative bg-card border border-border rounded-xl overflow-hidden cursor-pointer hover:border-primary/40 hover:shadow-[0_0_30px_hsl(165_100%_42%/0.08)] transition-all duration-300"
+              >
+                {/* Featured badge */}
+                {project.isFeatured && (
+                  <div className="absolute top-3 left-3 z-10">
+                    <span className="inline-flex items-center gap-1 bg-primary text-primary-foreground text-[10px] font-bold font-sans px-3 py-1 rounded-full">
+                      <Star size={10} /> Destacado
+                    </span>
+                  </div>
+                )}
+
+                {/* Image */}
+                <div className="relative h-44 overflow-hidden bg-muted">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="inline-flex items-center gap-1 text-xs text-primary font-sans font-medium">
+                      Ver detalles <ChevronRight size={12} />
+                    </span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-5">
+                  <span className={`inline-block text-[10px] font-bold font-sans uppercase tracking-wider px-2 py-0.5 rounded-full border mb-3 ${categoryColor[project.category]}`}>
+                    {project.category}
+                  </span>
+                  <h3 className="text-sm font-bold text-foreground font-sans line-clamp-2 mb-3 leading-snug">
+                    {project.title}
+                  </h3>
+
+                  {/* Stack chips */}
+                  <div className="flex flex-wrap gap-1 mb-4">
+                    {project.stack.slice(0, 4).map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-[10px] font-sans bg-muted text-muted-foreground px-2 py-0.5 rounded"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {project.stack.length > 4 && (
+                      <span className="text-[10px] font-sans text-muted-foreground px-1 py-0.5">
+                        +{project.stack.length - 4}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Links */}
+                  <div className="flex items-center gap-3 pt-1 border-t border-border">
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1 text-xs text-primary hover:text-primary/80 font-sans transition-colors"
+                      >
+                        <ExternalLink size={12} /> Demo
+                      </a>
+                    )}
+                    {project.repoUrl && (
+                      <a
+                        href={project.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground font-sans transition-colors"
+                      >
+                        <Github size={12} /> GitHub
+                      </a>
+                    )}
+                    {project.documentUrl && (
+                      <a
+                        href={project.documentUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground font-sans transition-colors"
+                      >
+                        <FileText size={12} /> Docs
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
+
+      {/* ── Detail Modal ── */}
+      <AnimatePresence>
+        {selected && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              key="backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelected(null)}
+              className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm"
+            />
+
+            {/* Modal */}
+            <motion.div
+              key="modal"
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none"
+            >
+              <div
+                className="pointer-events-auto bg-card border border-border rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Header image */}
+                <div className="relative h-52 overflow-hidden rounded-t-2xl bg-muted flex-shrink-0">
+                  <img
+                    src={selected.image}
+                    alt={selected.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
+                  {selected.isFeatured && (
+                    <div className="absolute top-4 left-4">
+                      <span className="inline-flex items-center gap-1 bg-primary text-primary-foreground text-xs font-bold font-sans px-3 py-1 rounded-full">
+                        <Star size={11} /> Destacado
+                      </span>
+                    </div>
+                  )}
+                  <button
+                    onClick={() => setSelected(null)}
+                    className="absolute top-4 right-4 bg-black/40 hover:bg-black/70 text-white rounded-full p-1.5 transition-colors"
+                  >
+                    <X size={16} />
+                  </button>
+                </div>
+
+                {/* Body */}
+                <div className="p-6 space-y-5">
+                  <div>
+                    <span className={`inline-block text-[10px] font-bold font-sans uppercase tracking-wider px-2 py-0.5 rounded-full border mb-2 ${categoryColor[selected.category]}`}>
+                      {selected.category}
+                    </span>
+                    <h3 className="text-lg font-bold text-foreground font-sans leading-snug">
+                      {selected.title}
+                    </h3>
+                  </div>
+
+                  <div>
+                    <p className="text-xs font-bold text-primary uppercase tracking-wider font-sans mb-1">Problema</p>
+                    <p className="text-sm text-muted-foreground font-sans leading-relaxed">{selected.problem}</p>
+                  </div>
+
+                  <div>
+                    <p className="text-xs font-bold text-primary uppercase tracking-wider font-sans mb-1">Solución</p>
+                    <p className="text-sm text-muted-foreground font-sans leading-relaxed">{selected.solution}</p>
+                  </div>
+
+                  <div>
+                    <p className="text-xs font-bold text-primary uppercase tracking-wider font-sans mb-2">Stack</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {selected.stack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="text-xs font-sans bg-muted text-muted-foreground px-2.5 py-1 rounded-md border border-border"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <p className="text-xs font-bold text-primary uppercase tracking-wider font-sans mb-2">Mi contribución</p>
+                    <div className="space-y-1">
+                      {selected.contribution.split("\n").map((line, i) => (
+                        <p key={i} className="text-sm text-muted-foreground font-sans leading-relaxed">
+                          {line}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Action links */}
+                  <div className="flex flex-wrap gap-3 pt-2 border-t border-border">
+                    {selected.liveUrl && (
+                      <a
+                        href={selected.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary inline-flex items-center gap-2 text-sm"
+                      >
+                        <ExternalLink size={14} /> Ver demo en vivo
+                      </a>
+                    )}
+                    {selected.repoUrl && (
+                      <a
+                        href={selected.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-outline inline-flex items-center gap-2 text-sm"
+                      >
+                        <Github size={14} /> GitHub
+                      </a>
+                    )}
+                    {selected.documentUrl && (
+                      <a
+                        href={selected.documentUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-outline inline-flex items-center gap-2 text-sm"
+                      >
+                        <FileText size={14} /> Documentación
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
