@@ -1,4 +1,4 @@
-import { Globe, Bot, TrendingUp } from "lucide-react";
+﻿import { Globe, Bot, TrendingUp } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import ScrollAnimation from "./ScrollAnimation";
 

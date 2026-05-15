@@ -1,6 +1,6 @@
-# ══════════════════════════════════════════════
+﻿# ══════════════════════════════════════════════
 #  MafeTech — robots.txt
-#  https://mafetech.com.ar/
+#  https://mafe-tech.vercel.app/
 # ══════════════════════════════════════════════
 
 # ── Crawlers de motores de búsqueda principales ──
@@ -82,4 +82,4 @@ User-agent: *
 Allow: /
 
 # ── Sitemap ──
-Sitemap: https://mafetech.com.ar/sitemap.xml
+Sitemap: https://mafe-tech.vercel.app/sitemap.xml

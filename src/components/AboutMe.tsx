@@ -2,13 +2,13 @@ import { Linkedin, Github, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import ScrollAnimation from "./ScrollAnimation";
 
-const techStack = ["React", "Next.js", "TypeScript", "n8n", "Make", "Gemini AI", "Tailwind CSS"];
+const techStack = ["n8n", "Gemini AI", "React", "TypeScript", "Next.js", "Supabase", "APIs REST", "Webhooks", "Vite", "Tailwind CSS"];
 
 const AboutMe = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-24 md:py-32">
+    <section id="sobre-mi" className="py-24 md:py-32">
       <div className="container mx-auto px-4 md:px-8">
         <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
           <ScrollAnimation>
@@ -28,7 +28,7 @@ const AboutMe = () => {
               </div>
 
               <div className="flex gap-4">
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/mafetechdev/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
                   <Linkedin size={20} />
                 </a>
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="GitHub">

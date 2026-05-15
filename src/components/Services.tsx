@@ -1,4 +1,4 @@
-import { Check, Star } from "lucide-react";
+﻿import { Check, Star } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import ScrollAnimation from "./ScrollAnimation";
 

@@ -96,7 +96,9 @@ const Contact = () => {
                   WhatsApp directo
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/mafetechdev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-3 text-foreground hover:text-primary transition-colors font-sans text-sm"
                 >
                   <Linkedin size={18} className="text-primary" />
@@ -106,7 +108,7 @@ const Contact = () => {
 
               <div className="border-t border-border pt-6">
                 <p className="text-muted-foreground font-sans text-xs">
-                  mafetech@gmail.com
+                  mafe4024@gmail.com
                 </p>
                 <p className="text-muted-foreground font-sans text-xs mt-1">
                   Córdoba, Argentina

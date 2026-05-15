@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+﻿import React, { createContext, useContext, useState, ReactNode } from "react";
 
 type Lang = "es" | "en";
 
@@ -17,54 +17,54 @@ const translations: Record<string, Record<Lang, string>> = {
   "nav.contact": { es: "Contacto", en: "Contact" },
 
   // Hero
-  "hero.label": { es: "FULL STACK · IA · AUTOMATIZACIÓN", en: "FULL STACK · AI · AUTOMATION" },
-  "hero.title": { es: "Tu negocio. Automatizado. Online. Creciendo.", en: "Your business. Automated. Online. Growing." },
+  "hero.label": { es: "AUTOMATION DEVELOPER · n8n · AI · REACT & TYPESCRIPT", en: "AUTOMATION DEVELOPER · n8n · AI · REACT & TYPESCRIPT" },
+  "hero.title": { es: "Automatizo procesos. Conecto sistemas. Desarrollo soluciones.", en: "I automate processes. Connect systems. Build solutions." },
   "hero.subtitle": {
-    es: "Combino desarrollo web, automatización con IA y marketing digital para transformar pymes en negocios de alto rendimiento. Resultados medibles en 90 días.",
-    en: "I combine web development, AI automation and digital marketing to transform SMBs into high-performance businesses. Measurable results in 90 days.",
+    es: "Automation Developer especializada en Workflow Automation con n8n, AI Automation con Gemini y desarrollo de aplicaciones web con React & TypeScript. Trabajo con pymes de Argentina, Latinoamérica y España.",
+    en: "Automation Developer specialized in Workflow Automation with n8n, AI Automation with Gemini and web apps with React & TypeScript. I work with SMBs from Argentina, Latin America and Spain.",
   },
   "hero.cta1": { es: "Ver servicios", en: "View services" },
   "hero.cta2": { es: "Hablemos", en: "Let's talk" },
 
   // Value Prop
-  "value.title": { es: "Una sola mano. Tres soluciones.", en: "One hand. Three solutions." },
-  "value.card1.title": { es: "Sitio web que convierte", en: "Websites that convert" },
+  "value.title": { es: "Automatización + Web. En una sola mano.", en: "Automation + Web. In one hand." },
+  "value.card1.title": { es: "Workflow Automation con n8n", en: "Workflow Automation with n8n" },
   "value.card1.desc": {
-    es: "Diseño y desarrollo sitios web enfocados en convertir visitantes en clientes. Rápidos, responsivos y optimizados para SEO.",
-    en: "I design and develop websites focused on converting visitors into clients. Fast, responsive and SEO optimized.",
+    es: "Diseño e implemento pipelines de automatización con n8n que conectan tus herramientas, clasifican leads, procesan documentos y eliminan tareas manuales.",
+    en: "I design and implement automation pipelines with n8n that connect your tools, classify leads, process documents and eliminate manual tasks.",
   },
-  "value.card2.title": { es: "Automatización con IA", en: "AI Automation" },
+  "value.card2.title": { es: "AI Automation con Gemini", en: "AI Automation with Gemini" },
   "value.card2.desc": {
-    es: "Automatizo procesos repetitivos con n8n, Make e inteligencia artificial. Menos trabajo manual, más resultados.",
-    en: "I automate repetitive processes with n8n, Make and AI. Less manual work, more results.",
+    es: "Integro modelos de IA (Gemini, GPT) a tus workflows para análisis inteligente de datos, chatbots en WhatsApp, clasificación automática y procesamiento multimodal.",
+    en: "I integrate AI models (Gemini, GPT) into your workflows for smart data analysis, WhatsApp chatbots, automatic classification and multimodal processing.",
   },
-  "value.card3.title": { es: "Marketing digital estratégico", en: "Strategic digital marketing" },
+  "value.card3.title": { es: "React & TypeScript Web Apps", en: "React & TypeScript Web Apps" },
   "value.card3.desc": {
-    es: "Estrategias de marketing digital con métricas claras. SEO, contenido y campañas que generan leads reales.",
-    en: "Digital marketing strategies with clear metrics. SEO, content and campaigns that generate real leads.",
+    es: "Desarrollo sitios web, e-commerce y aplicaciones con React y TypeScript, conectados a automatizaciones y bases de datos en tiempo real.",
+    en: "I build websites, e-commerce and apps with React and TypeScript, connected to automations and real-time databases.",
   },
 
   // Services
-  "services.title": { es: "Servicios diseñados para crecer", en: "Services designed to grow" },
+  "services.title": { es: "Servicios de Automation y Desarrollo Web", en: "Automation & Web Development Services" },
   "services.consult": { es: "Consultar", en: "Inquire" },
   "services.popular": { es: "Más elegido", en: "Most popular" },
-  "services.p1.name": { es: "Presencia Digital", en: "Digital Presence" },
+  "services.p1.name": { es: "Workflow Automation", en: "Workflow Automation" },
   "services.p1.price": { es: "$600–900 USD", en: "$600–900 USD" },
   "services.p1.items": {
-    es: "Landing page profesional|Integración WhatsApp|SEO básico|Diseño responsive|Entrega en 2 semanas",
-    en: "Professional landing page|WhatsApp integration|Basic SEO|Responsive design|Delivery in 2 weeks",
+    es: "Diseño de pipeline con n8n|Integración de APIs y webhooks|Conexión con Google Workspace|Notificaciones automáticas|Documentación técnica incluida",
+    en: "n8n pipeline design|API and webhook integration|Google Workspace connection|Automatic notifications|Technical documentation included",
   },
-  "services.p2.name": { es: "Todo en Uno", en: "All-in-One" },
+  "services.p2.name": { es: "AI Automation + Web", en: "AI Automation + Web" },
   "services.p2.price": { es: "$1.800–2.500 USD", en: "$1,800–2,500 USD" },
   "services.p2.items": {
-    es: "Sitio web completo (hasta 5 páginas)|Automatización de procesos con IA|Plan de marketing digital 90 días|CRM básico integrado|Soporte prioritario 3 meses",
-    en: "Complete website (up to 5 pages)|AI process automation|90-day digital marketing plan|Basic integrated CRM|Priority support 3 months",
+    es: "Workflows inteligentes con Gemini o GPT|Sitio web o app con React & TypeScript|Integración WhatsApp y CRM|Automatización de leads y formularios|Soporte prioritario 3 meses",
+    en: "Smart workflows with Gemini or GPT|Website or app with React & TypeScript|WhatsApp and CRM integration|Lead and form automation|Priority support 3 months",
   },
   "services.p3.name": { es: "Ecosistema Inteligente", en: "Smart Ecosystem" },
   "services.p3.price": { es: "$3.500–5.000 USD", en: "$3,500–5,000 USD" },
   "services.p3.items": {
-    es: "Todo lo del plan anterior|CRM avanzado personalizado|Agentes de IA entrenados|Dashboard de métricas en tiempo real|Soporte y evolución 6 meses",
-    en: "Everything from previous plan|Custom advanced CRM|Trained AI agents|Real-time metrics dashboard|Support and evolution 6 months",
+    es: "Todo lo del plan anterior|Agentes de IA con RAG y Human-in-the-Loop|Dashboard de métricas en tiempo real|Automatización end-to-end de procesos críticos|Soporte y evolución 6 meses",
+    en: "Everything from previous plan|AI agents with RAG and Human-in-the-Loop|Real-time metrics dashboard|End-to-end automation of critical processes|Support and evolution 6 months",
   },
 
   // Projects
@@ -86,11 +86,11 @@ const translations: Record<string, Record<Lang, string>> = {
 
   // Why
   "why.label": { es: "¿POR QUÉ MAFETECH?", en: "WHY MAFETECH?" },
-  "why.title": { es: "La diferencia está en los detalles", en: "The difference is in the details" },
-  "why.b1": { es: "Perfil único en Argentina: web + automatización + marketing en una sola persona", en: "Unique profile in Argentina: web + automation + marketing in one person" },
-  "why.b2": { es: "Datos en tus servidores: n8n self-hosted, cumplimiento Ley 25.326", en: "Data on your servers: self-hosted n8n, data privacy compliance" },
-  "why.b3": { es: "ROI en 90 días: resultados medibles desde el primer mes", en: "ROI in 90 days: measurable results from month one" },
-  "why.b4": { es: "Transparencia total: documentación completa, sin letra chica", en: "Full transparency: complete documentation, no fine print" },
+  "why.title": { es: "Automation Developer con visión de negocio", en: "Automation Developer with business vision" },
+  "why.b1": { es: "Especialización real en n8n y AI Automation: workflows de producción, no prototipos", en: "Real n8n and AI Automation expertise: production-grade workflows, not prototypes" },
+  "why.b2": { es: "n8n self-hosted disponible: tus datos en tus servidores, cumpliendo Ley 25.326", en: "Self-hosted n8n available: your data on your servers, GDPR-compatible" },
+  "why.b3": { es: "Perfil híbrido único: Automation Developer + Frontend React en una sola persona", en: "Unique hybrid profile: Automation Developer + React Frontend in one person" },
+  "why.b4": { es: "Documentación técnica completa en cada proyecto. Sin letra chica, sin dependencias", en: "Full technical documentation on every project. No fine print, no lock-in" },
 
   // Process
   "process.title": { es: "Cómo trabajamos", en: "How we work" },
@@ -106,20 +106,20 @@ const translations: Record<string, Record<Lang, string>> = {
   // About
   "about.label": { es: "SOBRE MÍ", en: "ABOUT ME" },
   "about.name": { es: "María Fernanda Moreno", en: "María Fernanda Moreno" },
-  "about.role": { es: "Fundadora de MafeTech", en: "Founder of MafeTech" },
+  "about.role": { es: "Automation Developer · n8n · AI · React & TypeScript", en: "Automation Developer · n8n · AI · React & TypeScript" },
   "about.p1": {
-    es: "Soy desarrolladora full stack y especialista en automatización con IA. Desde Córdoba, Argentina, trabajo con pymes y emprendedores de toda Latinoamérica y el mundo.",
-    en: "I'm a full stack developer and AI automation specialist. From Córdoba, Argentina, I work with SMBs and entrepreneurs across Latin America and globally.",
+    es: "Soy Automation Developer especializada en Workflow Automation con n8n, AI Automation con Gemini y desarrollo de aplicaciones web con React y TypeScript. Trabajo de forma remota desde Córdoba, Argentina con pymes de Argentina, Latinoamérica y España.",
+    en: "I'm an Automation Developer specialized in Workflow Automation with n8n, AI Automation with Gemini and web app development with React and TypeScript. I work remotely from Córdoba, Argentina with SMBs across Argentina, Latin America and Spain.",
   },
   "about.p2": {
-    es: "Mi enfoque es simple: cada negocio merece herramientas digitales que funcionen de verdad. Sin intermediarios, sin costos ocultos, con resultados medibles.",
-    en: "My approach is simple: every business deserves digital tools that actually work. No middlemen, no hidden costs, with measurable results.",
+    es: "Diseño pipelines que automatizan procesos reales: clasificación de leads, procesamiento de documentos, chatbots en WhatsApp y sistemas de IA conectados a tu negocio. Sin costos ocultos, con documentación completa.",
+    en: "I design pipelines that automate real processes: lead classification, document processing, WhatsApp chatbots and AI systems connected to your business. No hidden costs, with full documentation.",
   },
 
   // CTA
-  "cta.title": { es: "¿Listo para transformar tu negocio?", en: "Ready to transform your business?" },
-  "cta.subtitle": { es: "Empezamos con una auditoría gratuita de 15 minutos.", en: "We start with a free 15-minute audit." },
-  "cta.btn1": { es: "Agendar auditoría", en: "Schedule audit" },
+  "cta.title": { es: "¿Querés automatizar procesos en tu negocio?", en: "Want to automate processes in your business?" },
+  "cta.subtitle": { es: "Empezamos con un diagnóstico gratuito de 15 minutos para identificar qué podés automatizar.", en: "We start with a free 15-minute diagnosis to identify what you can automate." },
+  "cta.btn1": { es: "Agendar diagnóstico", en: "Schedule diagnosis" },
   "cta.btn2": { es: "WhatsApp directo", en: "Direct WhatsApp" },
 
   // Contact
@@ -139,12 +139,12 @@ const translations: Record<string, Record<Lang, string>> = {
 
   // Footer
   "footer.desc": {
-    es: "Transformamos tu negocio con web, automatización e IA — todo en una sola mano.",
-    en: "We transform your business with web, automation & AI — all in one place.",
+    es: "Automation Developer · Workflow Automation con n8n · AI Automation · React & TypeScript. Córdoba, Argentina — LATAM — España.",
+    en: "Automation Developer · Workflow Automation with n8n · AI Automation · React & TypeScript. Córdoba, Argentina — LATAM — Spain.",
   },
   "footer.nav": { es: "Navegación", en: "Navigation" },
   "footer.contact": { es: "Contacto", en: "Contact" },
-  "footer.location": { es: "Córdoba, Argentina · Trabajamos con clientes en LATAM y global", en: "Córdoba, Argentina · Working with clients in LATAM and globally" },
+  "footer.location": { es: "Córdoba, Argentina · Atención remota para Argentina, Latinoamérica y España", en: "Córdoba, Argentina · Remote services for Argentina, Latin America and Spain" },
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);

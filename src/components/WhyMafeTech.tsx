@@ -1,4 +1,4 @@
-import { Shield, Server, BarChart3, FileText } from "lucide-react";
+﻿import { Shield, Server, BarChart3, FileText } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import ScrollAnimation from "./ScrollAnimation";
 

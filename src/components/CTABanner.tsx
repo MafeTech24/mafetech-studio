@@ -1,4 +1,4 @@
-import { useLanguage } from "@/contexts/LanguageContext";
+﻿import { useLanguage } from "@/contexts/LanguageContext";
 import ScrollAnimation from "./ScrollAnimation";
 
 const CTABanner = () => {

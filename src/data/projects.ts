@@ -1,4 +1,4 @@
-// ─── Project image imports ──────────────────────────────────────────────────
+﻿// ─── Project image imports ──────────────────────────────────────────────────
 import sentimientosGemini from "../assets/sentimientosGemini.jpg";
 import triageHospitalario from "../assets/triageHospitalario.jpg";
 import tonioMiniMarket from "../assets/tonioMiniMarket.jpg";
@@ -189,8 +189,7 @@ export const projects: Project[] = [
     contribution:
       "• Implementación de sistema de reserva con captura estructurada de datos de la mascota\n• Integración con WhatsApp mediante generación automática de mensajes formateados\n• Desarrollo de galería interactiva 'Antes y Después' con lógica dinámica\n• Interfaz responsive mobile-first con animaciones Framer Motion\n• Deploy completo en Vercel con CI desde GitHub",
     image: patitasFelices,
-    liveUrl: "https://patitasfelices-spa.vercel.app/",
-    repoUrl: "https://github.com/MafeTech24/patitasFelices",
+    liveUrl: "https://patitasfelices-spa.vercel.app/",   
   },
   {
     id: "emily-hair-studio-web-app",
@@ -205,7 +204,6 @@ export const projects: Project[] = [
       "• Desarrollo de sistema de diagnóstico interactivo con validación y generación dinámica de mensajes\n• Integración con WhatsApp mediante deep linking y payload estructurado\n• Carga de imágenes desde el cliente como parte del flujo de diagnóstico\n• Animaciones avanzadas con Framer Motion\n• Deploy en Vercel con pipeline de CI desde GitHub",
     image: emilyHair,
     liveUrl: "https://emilyhairstudio.vercel.app/",
-    repoUrl: "https://github.com/MafeTech24/emilyHair",
   },
   {
     id: "furnariusEventos",

@@ -1,4 +1,4 @@
-import { Search, FileText, Rocket, HeadphonesIcon } from "lucide-react";
+﻿import { Search, FileText, Rocket, HeadphonesIcon } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import ScrollAnimation from "./ScrollAnimation";
 

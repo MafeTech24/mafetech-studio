@@ -1,52 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <!-- ── Página principal ── -->
   <url>
-    <loc>https://mafetech.com.ar/</loc>
+    <loc>https://mafe-tech.vercel.app/</loc>
     <lastmod>2026-05-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <!-- hreflang alternates -->
-    <xhtml:link rel="alternate" hreflang="es-AR" href="https://mafetech.com.ar/"/>
-    <xhtml:link rel="alternate" hreflang="es-ES" href="https://mafetech.com.ar/"/>
-    <xhtml:link rel="alternate" hreflang="es-419" href="https://mafetech.com.ar/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mafetech.com.ar/"/>
+    <xhtml:link rel="alternate" hreflang="es-AR" href="https://mafe-tech.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="es-ES" href="https://mafe-tech.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="es-419" href="https://mafe-tech.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mafe-tech.vercel.app/"/>
   </url>
 
   <!-- ── Secciones internas (anclas) ── -->
   <url>
-    <loc>https://mafetech.com.ar/#servicios</loc>
+    <loc>https://mafe-tech.vercel.app/#servicios</loc>
     <lastmod>2026-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://mafetech.com.ar/#proyectos</loc>
+    <loc>https://mafe-tech.vercel.app/#proyectos</loc>
     <lastmod>2026-05-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://mafetech.com.ar/#proceso</loc>
+    <loc>https://mafe-tech.vercel.app/#proceso</loc>
     <lastmod>2026-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://mafetech.com.ar/#sobre-mi</loc>
+    <loc>https://mafe-tech.vercel.app/#sobre-mi</loc>
     <lastmod>2026-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://mafetech.com.ar/#contacto</loc>
+    <loc>https://mafe-tech.vercel.app/#contacto</loc>
     <lastmod>2026-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, FileText, X, Star, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";

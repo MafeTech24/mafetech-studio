@@ -53,7 +53,7 @@ const Footer = () => {
           <div>
             <h4 className="text-foreground font-sans font-semibold text-sm mb-4">{t("footer.contact")}</h4>
             <div className="flex gap-4 mb-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/mafetechdev/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
                 <Linkedin size={18} />
               </a>
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="GitHub">
@@ -63,7 +63,7 @@ const Footer = () => {
                 <MessageSquare size={18} />
               </a>
             </div>
-            <p className="text-muted-foreground text-xs font-sans">mafetech@gmail.com</p>
+            <p className="text-muted-foreground text-xs font-sans">mafe4024@gmail.com</p>
           </div>
         </div>
 
