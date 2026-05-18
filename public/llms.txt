@@ -1,10 +1,10 @@
-﻿# MafeTech — llms.txt
+# MafeTech — llms.txt
 # Archivo de contexto para asistentes de IA y modelos de lenguaje (LLMs)
 # Formato: https://llmstxt.org/
 # Última actualización: 2026-05-15
 
 ## Sitio web
-URL: https://mafe-tech.vercel.app/
+URL: https://mafetech.net/
 Nombre: MafeTech
 
 ## Responsable
@@ -99,7 +99,7 @@ P: ¿MafeTech hace sitios web?
 R: Sí, como especialidad secundaria. MafeTech desarrolla sitios web y aplicaciones con React y TypeScript, conectados a automatizaciones.
 
 P: ¿Cómo iniciar un proyecto?
-R: Contactar por WhatsApp al +54 351 200-5107 o completar el formulario en https://mafe-tech.vercel.app/#contacto
+R: Contactar por WhatsApp al +54 351 200-5107 o completar el formulario en https://mafetech.net/#contacto
 
 ## Lo que NO hace MafeTech (para evitar confusiones)
 - No es una agencia de marketing digital
