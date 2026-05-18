@@ -1,9 +1,9 @@
-﻿import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import ScrollAnimation from "./ScrollAnimation";
 
 const CTABanner = () => {
   const { t } = useLanguage();
-  const whatsappUrl = "https://wa.me/543512005107?text=Hola%20Mafe,%20quiero%20agendar%20una%20auditoría";
+  const whatsappUrl = "https://wa.me/543512005107?text=Hola%20Mafe%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20tus%20servicios";
 
   return (
     <section className="py-24 md:py-32 relative overflow-hidden">
@@ -17,9 +17,6 @@ const CTABanner = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-primary text-base">
               {t("cta.btn1")}
-            </a>
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-outline text-base">
-              {t("cta.btn2")}
             </a>
           </div>
         </ScrollAnimation>

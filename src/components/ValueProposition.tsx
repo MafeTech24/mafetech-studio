@@ -1,11 +1,11 @@
-﻿import { Globe, Bot, TrendingUp } from "lucide-react";
+import { Zap, Bot, Monitor } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import ScrollAnimation from "./ScrollAnimation";
 
 const cards = [
-  { icon: Globe, titleKey: "value.card1.title", descKey: "value.card1.desc" },
+  { icon: Zap, titleKey: "value.card1.title", descKey: "value.card1.desc" },
   { icon: Bot, titleKey: "value.card2.title", descKey: "value.card2.desc" },
-  { icon: TrendingUp, titleKey: "value.card3.title", descKey: "value.card3.desc" },
+  { icon: Monitor, titleKey: "value.card3.title", descKey: "value.card3.desc" },
 ];
 
 const ValueProposition = () => {

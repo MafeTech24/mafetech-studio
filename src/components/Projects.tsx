@@ -1,19 +1,19 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, FileText, X, Star, ChevronRight } from "lucide-react";
+import { ExternalLink, FileText, X, Star, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import ScrollAnimation from "./ScrollAnimation";
 import { projects, type ProjectCategory } from "@/data/projects";
 
 const CATEGORIES: { label: string; value: ProjectCategory | "Todos" }[] = [
   { label: "Todos", value: "Todos" },
-  { label: "Automatización", value: "Automatización" },
+  { label: "Aplicación Web", value: "Aplicación Web" },
   { label: "Desarrollo Web", value: "Desarrollo Web" },
   { label: "E-commerce", value: "E-commerce" },
 ];
 
 const categoryColor: Record<ProjectCategory, string> = {
-  "Automatización": "bg-primary/20 text-primary border-primary/30",
+  "Aplicación Web": "bg-violet-500/20 text-violet-400 border-violet-500/30",
   "Desarrollo Web": "bg-cyan-500/20 text-cyan-400 border-cyan-500/30",
   "E-commerce": "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
 };
@@ -138,17 +138,7 @@ const Projects = () => {
                         <ExternalLink size={12} /> Demo
                       </a>
                     )}
-                    {project.repoUrl && (
-                      <a
-                        href={project.repoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground font-sans transition-colors"
-                      >
-                        <Github size={12} /> GitHub
-                      </a>
-                    )}
+
                     {project.documentUrl && (
                       <a
                         href={project.documentUrl}
@@ -276,16 +266,7 @@ const Projects = () => {
                         <ExternalLink size={14} /> Ver demo en vivo
                       </a>
                     )}
-                    {selected.repoUrl && (
-                      <a
-                        href={selected.repoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-outline inline-flex items-center gap-2 text-sm"
-                      >
-                        <Github size={14} /> GitHub
-                      </a>
-                    )}
+
                     {selected.documentUrl && (
                       <a
                         href={selected.documentUrl}

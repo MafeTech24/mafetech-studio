@@ -1,4 +1,4 @@
-import { Linkedin, Github, MessageSquare } from "lucide-react";
+import { Linkedin, MessageSquare } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
@@ -56,9 +56,7 @@ const Footer = () => {
               <a href="https://www.linkedin.com/in/mafetechdev/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
                 <Linkedin size={18} />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="GitHub">
-                <Github size={18} />
-              </a>
+
               <a href="https://wa.me/543512005107" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="WhatsApp">
                 <MessageSquare size={18} />
               </a>
@@ -70,7 +68,7 @@ const Footer = () => {
         <div className="section-divider mb-8" />
         <div className="text-center">
           <p className="text-muted-foreground text-xs font-sans">
-            © {new Date().getFullYear()} MafeTech. {t("footer.location")}
+            {t("footer.location")}
           </p>
         </div>
       </div>

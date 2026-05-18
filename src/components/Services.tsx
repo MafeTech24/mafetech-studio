@@ -1,4 +1,4 @@
-﻿import { Check, Star } from "lucide-react";
+import { Check, Star } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import ScrollAnimation from "./ScrollAnimation";
 
@@ -11,7 +11,7 @@ const Services = () => {
     { nameKey: "services.p3.name", priceKey: "services.p3.price", itemsKey: "services.p3.items", featured: false },
   ];
 
-  const whatsappUrl = "https://wa.me/543512005107?text=Hola%20Mafe,%20me%20interesa%20un%20servicio";
+  const whatsappUrl = "https://wa.me/543512005107?text=Hola%20Mafe%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20tus%20servicios";
 
   return (
     <section id="servicios" className="py-24 md:py-32">

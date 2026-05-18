@@ -1,25 +1,14 @@
-﻿// ─── Project image imports ──────────────────────────────────────────────────
-import sentimientosGemini from "../assets/sentimientosGemini.jpg";
-import triageHospitalario from "../assets/triageHospitalario.jpg";
+// ─── Project image imports ──────────────────────────────────────────────────
 import tonioMiniMarket from "../assets/tonioMiniMarket.jpg";
 import arquetipoIA from "../assets/arquetipoIA.jpg";
 import bannerPrettyLady from "../assets/bannerPrettyLady.jpg";
 import amoblamientosElReyNorte from "../assets/amoblamientosElReyNorte.jpg";
-import leadFlowAI from "../assets/leadFlowAI.jpg";
-import aiEmailProcessing from "../assets/aiEmailProcessing.jpg";
-import errorHandler from "../assets/errorHandler.jpg";
-import flujoExitoso from "../assets/7.flujoExitoso.jpg";
-import chatbotFurnarius from "../assets/chatbotFurnarius.jpg";
-import conexionLLMS from "../assets/conexionLLMS.jpg";
 import patitasFelices from "../assets/patitasFelices.jpg";
 import emilyHair from "../assets/emilyHair.jpg";
 import furnarius from "../assets/furnarius.jpg";
-import elReyNorte from "../assets/elReyNorte.jpg";
 // artesani&beta.jpg — special char handled via URL
-import logoPyM from "../assets/logoPyM.jpg";
-import n8nWorkflow from "../assets/n8n-workflow.jpg";
 
-export type ProjectCategory = "Automatización" | "Desarrollo Web" | "E-commerce";
+export type ProjectCategory = "Aplicación Web" | "Desarrollo Web" | "E-commerce";
 
 export interface Project {
   id: string;
@@ -37,135 +26,12 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-  // ── Automatización ─────────────────────────────────────────────────────────
-  {
-    id: "triage-hospitalario-hitl",
-    isFeatured: true,
-    category: "Automatización",
-    title: "Sistema de Triage Automático de Derivaciones Hospitalarias con IA y Human-in-the-Loop",
-    problem:
-      "En hospitales argentinos, la clasificación manual de derivaciones médicas entrantes toma entre 48 y 72 horas, genera errores de clasificación, sobrecarga de especialidades y falta de trazabilidad para auditorías regulatorias.",
-    solution:
-      "Sistema de automatización avanzado que recibe derivaciones desde múltiples canales (HIS/EHR vía FHIR, PDFs, WhatsApp), las procesa de forma multimodal (texto + imágenes RX/TC), consulta guías clínicas actualizadas mediante RAG sobre base vectorial, genera clasificación con score de confianza y escala los casos ambiguos a revisión médica humana. Ciclo de auto-mejora continua basado en feedback de médicos revisores.",
-    stack: ["n8n (self-hosted Docker)", "Gemini 2.5 Flash", "Gemini 2.5 Pro", "Supabase pgvector", "RAG", "LlamaCloud", "NotebookLM", "Retool (HITL)", "Grafana + Loki", "FHIR R4", "JavaScript", "Docker Compose"],
-    contribution:
-      "• Diseño de arquitectura multimodal con 5 capas: ingesta, orquestación n8n, RAG vectorial, HITL y observabilidad\n• Implementación de pipeline RAG con indexación offline (batch semanal) y consulta online (<3s p95)\n• Integración multimodal texto + imagen (RX/TC) con Gemini 2.5 Flash\n• Sistema HITL en Retool con criterios de escalación explícitos y SLA diferenciado por urgencia\n• Pipeline de evaluación automática semanal con métricas accuracy y F1\n• Observabilidad completa con logs estructurados JSON, Grafana + Loki y alertas PagerDuty\n• Anonimización de datos clínicos cumpliendo Ley 25.326\n• Documentación técnica profesional de 15 páginas con diagramas de arquitectura\n• Proyecto Final Integrador — AI Automation Avanzado, Coderhouse",
-    image: triageHospitalario,
-    documentUrl: "https://docs.google.com/document/d/1glkRixnXd3rUrWGr4Au9xSsqLFpNz2D3kgqsVnKby4U/edit?usp=sharing",
-  },
-  {
-    id: "leadflow-ai-n8n",
-    category: "Automatización",
-    title: "LeadFlow AI — Pipeline de Clasificación Inteligente de Leads con n8n y Gemini AI",
-    problem:
-      "La clasificación manual de leads comerciales consume tiempo del equipo de ventas y genera demoras en el seguimiento de oportunidades urgentes. Sin automatización, los leads calientes pueden perderse entre decenas de consultas sin priorización.",
-    solution:
-      "Pipeline de automatización con n8n de arquitectura modular que captura leads vía webhook, valida y normaliza el input, clasifica automáticamente con Gemini AI (score 1–10, hot/warm/cold), persiste en Google Sheets y envía alertas por email cuando detecta un lead caliente.",
-    stack: ["n8n", "JavaScript", "Gemini AI", "Google Sheets API", "Gmail API", "Webhooks", "REST APIs", "Modular Architecture"],
-    contribution:
-      "• Diseño de arquitectura modular con 3 sub-workflows reutilizables e independientes\n• Integración con Gemini 2.0 Flash para clasificación estructurada con schema forzado\n• Persistencia automática en Google Sheets con trazabilidad completa por execution_id\n• Sistema de alertas por Gmail para leads con categoría HOT\n• Pipeline probado end-to-end con datos reales en n8n Cloud\n• Documentación profesional con README, .env.example y setup en 5 minutos",
-    image: leadFlowAI,
-    repoUrl: "https://github.com/MafeTech24/LeadFlow-AI",
-  },
-  {
-    id: "ai-email-document-intelligence-n8n",
-    category: "Automatización",
-    title: "AI Document Intelligence Pipeline — Automatización End-to-End de Documentos desde Email con OCR e IA",
-    problem:
-      "El procesamiento manual de facturas y documentos administrativos consume tiempo, es propenso a errores y limita la escalabilidad operativa. Las empresas necesitan automatizar la captura, análisis y registro de documentos recibidos por email sin intervención humana.",
-    solution:
-      "Pipeline de Document Intelligence con n8n que monitorea emails entrantes, detecta adjuntos automáticamente, extrae texto mediante OCR, analiza el contenido con IA y registra los datos estructurados en Google Sheets, almacenando los archivos originales en Google Drive.",
-    stack: ["n8n", "JavaScript", "Gmail API", "Google Sheets API", "Google Drive API", "OCR Integration", "AI Integration", "Email Automation"],
-    contribution:
-      "• Integración con Gmail API para captura automática de documentos entrantes\n• Implementación de extracción de texto mediante OCR para PDF e imágenes\n• Integración de IA para análisis y estructuración de datos\n• Desarrollo de lógica de clasificación automática mediante nodos Switch\n• Persistencia estructurada en Google Sheets para auditoría\n• Almacenamiento automático en Google Drive\n• Manejo de errores y fallback para archivos inválidos",
-    image: aiEmailProcessing,
-    repoUrl: "https://github.com/MafeTech24/ai-email-document-processing-n8n",
-  },
-  {
-    id: "production-grade-error-handling-n8n",
-    category: "Automatización",
-    title: "Sistema Global de Manejo de Errores y Alertas en Tiempo Real para Automatizaciones",
-    problem:
-      "Las automatizaciones suelen fallar en silencio, generando pérdida de datos e interrupciones operativas. Sin un sistema centralizado de monitoreo, los errores pueden pasar desapercibidos durante horas o días.",
-    solution:
-      "Sistema global con n8n que captura automáticamente cualquier fallo en workflows, normaliza los datos del error, los registra en Google Sheets para auditoría persistente y envía alertas en tiempo real vía email.",
-    stack: ["n8n", "JavaScript", "Google Sheets API", "Gmail API", "Error Monitoring", "Observability", "Reliability Engineering"],
-    contribution:
-      "• Implementación de Error Trigger para captura automática de fallos en tiempo real\n• Lógica de normalización de errores en JavaScript\n• Persistencia de logs en Google Sheets para auditoría completa\n• Integración de sistema de alertas automáticas vía Gmail\n• Configuración segura mediante variables de entorno\n• Arquitectura reusable para cualquier workflow",
-    image: errorHandler,
-    repoUrl: "https://github.com/MafeTech24/production-grade-error-handling-n8n",
-  },
-  {
-    id: "gemini-document-processing-pipeline",
-    category: "Automatización",
-    title: "Sistema Backend de Procesamiento Documental con Gemini AI, Supabase y Confidence Scoring",
-    problem:
-      "La recepción de documentos desde múltiples sistemas requiere validación, normalización y almacenamiento confiable. Sin un pipeline automatizado, los datos pueden perderse, duplicarse o procesarse incorrectamente.",
-    solution:
-      "Pipeline backend con n8n que recibe documentos vía webhook, extrae datos estructurados con Gemini AI, calcula un puntaje de confianza automático, registra los resultados en Supabase y genera dashboards en Google Sheets.",
-    stack: ["n8n", "Gemini AI", "Supabase", "Google Sheets API", "JavaScript", "REST APIs", "Confidence Scoring", "Backend Architecture"],
-    contribution:
-      "• Diseño de arquitectura backend API-First\n• Integración con Gemini AI para extracción inteligente de datos\n• Implementación de confidence scoring automático\n• Persistencia estructurada en Supabase\n• Dashboards en Google Sheets para monitoreo en tiempo real\n• Pipeline reusable listo para producción",
-    image: flujoExitoso,
-    repoUrl: "https://github.com/MafeTech24/n8n-procesamientoDocsEnd2End",
-  },
-  {
-    id: "analisis-sentimientos-gemini",
-    category: "Automatización",
-    title: "Sistema de Análisis de Sentimientos de Tweets con n8n y Gemini",
-    problem:
-      "Las empresas necesitan monitorear en tiempo real el tono de las menciones en redes sociales, pero el análisis manual es lento y no escala.",
-    solution:
-      "Pipeline de automatización en n8n que captura tweets vía webhook, los clasifica por sentimiento (positivo, negativo, neutro) usando Gemini AI y genera reportes estructurados automáticamente. Implementado en instancia Docker local.",
-    stack: ["n8n", "Gemini AI", "JavaScript", "Docker", "Webhooks", "JSON", "GitHub"],
-    contribution:
-      "• Diseño e implementación del pipeline completo en n8n\n• Integración con Gemini AI para clasificación de sentimientos\n• Configuración de instancia n8n self-hosted en Docker\n• Debugging de integración Gemini (token requirements, JSON parsing)\n• Documentación técnica y publicación en GitHub\n• Proyecto final de la Carrera AI Automation — Coderhouse",
-    image: sentimientosGemini,
-  },
-  {
-    id: "chatbot-furnarius",
-    category: "Automatización",
-    title: "Asistente Inteligente de CX — Chatbot de Audio y Texto con IA",
-    problem:
-      "Falta de respuesta inmediata a consultas complejas de ambientación y mobiliario, afectando la conversión de clientes potenciales.",
-    solution:
-      "Flujo de IA conversacional que procesa entradas de audio y texto, automatizando la calificación de leads y la respuesta personalizada mediante modelos de lenguaje avanzados.",
-    stack: ["n8n", "Webhooks", "IA / LLM", "HTTP Request", "WhatsApp API"],
-    contribution:
-      "• Diseño de flujo lógico para el procesamiento de archivos de audio\n• Implementación de nodos de decisión (Switch) para rutas de atención\n• Integración de agentes de IA para respuestas naturales y contextuales\n• Optimización de la experiencia del usuario (CX) en el canal de contacto",
-    image: chatbotFurnarius,
-  },
-  {
-    id: "chatbot-llm-oracle",
-    category: "Automatización",
-    title: "Arquitectura de Chatbot con Lógica de Datos Asíncrona",
-    problem:
-      "Dificultad de los sistemas tradicionales para gestionar consultas complejas que requieren tiempos de procesamiento variables sin bloquear la experiencia del usuario.",
-    solution:
-      "Motor de consultas inteligente que conecta con LLMs de última generación. Implementa nodos de espera y división de datos para garantizar respuestas precisas y fluidas en cualquier volumen de demanda.",
-    stack: ["n8n", "LLM Integration", "Advanced Logic Nodes", "JSON Manipulation"],
-    contribution:
-      "• Desarrollo de una interfaz de comunicación fluida con agentes de IA\n• Implementación de lógica de 'Split Out' para descomponer consultas complejas\n• Gestión de latencia mediante nodos de espera controlada\n• Arquitectura certificada bajo estándares de Oracle Next Education",
-    image: conexionLLMS,
-  },
-  {
-    id: "n8n-reuniones",
-    category: "Automatización",
-    title: "Sistema de Actas e Insights con IA (Google Workspace)",
-    problem:
-      "Procesamiento manual de grabaciones de reuniones, resultando en pérdida de información crítica y falta de seguimiento de tareas.",
-    solution:
-      "Arquitectura de flujo automatizado que transforma audio en documentos de gestión. Utiliza IA para extraer puntos clave y actualizar tableros Kanban de forma autónoma.",
-    stack: ["n8n", "Google Drive", "Google Docs", "Google Sheets", "IA (LLM)"],
-    contribution:
-      "• Ingeniería de prompts para la extracción precisa de tareas\n• Integración de APIs de Google para gestión documental\n• Diseño de lógica de actualización asíncrona en Sheets\n• Testing de precisión en transcripción y categorización",
-    image: n8nWorkflow,
-  },
+
 
   // ── Desarrollo Web ─────────────────────────────────────────────────────────
   {
     id: "arquetipo-ia",
-    category: "Desarrollo Web",
+    category: "Aplicación Web",
     title: "ArquetipoIA — Generador de Buyer Personas con Gemini AI",
     problem:
       "Freelancers y agencias de LATAM pierden tiempo construyendo buyer personas manualmente, sin una herramienta accesible, en español y adaptada a la realidad del mercado regional.",
@@ -263,20 +129,7 @@ export const projects: Project[] = [
     image: amoblamientosElReyNorte,
     liveUrl: "https://amoblamientoselreydelnorte.vercel.app/",
   },
-  {
-    id: "elReydelNorte",
-    category: "E-commerce",
-    title: "Amoblamientos El Rey del Norte — Catálogo Digital Estratégico (v1)",
-    problem:
-      "Falta de un canal centralizado para exhibir stock, lo que generaba procesos de venta lentos y una imagen de marca informal frente a la competencia.",
-    solution:
-      "Catálogo interactivo optimizado para conversión con interfaz visualmente imponente que organiza productos por categorías, facilitando la decisión de compra del cliente final.",
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel", "GitHub", "Lovable (IA)"],
-    contribution:
-      "• Consultoría de negocio para definir la jerarquía de productos\n• Diseño de UI enfocado en la visualización de alta calidad\n• Estructura escalable para actualización constante de stock\n• Optimización de velocidad de carga para dispositivos móviles",
-    image: elReyNorte,
-    liveUrl: "https://amoblamientoselreydelnorte.vercel.app/",
-  },
+
   {
     id: "artesaniaVeta",
     category: "E-commerce",
