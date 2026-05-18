@@ -25,7 +25,7 @@ const Contact = () => {
               rel="noopener noreferrer"
               className="btn-primary w-full flex items-center justify-center gap-2 text-base py-4"
             >
-              <MessageSquare size={18} /> Hablemos por WhatsApp
+              <MessageSquare size={18} /> {t("contact.whatsapp")}
             </a>
 
             <div className="flex flex-col items-center gap-3 pt-4 border-t border-border w-full">

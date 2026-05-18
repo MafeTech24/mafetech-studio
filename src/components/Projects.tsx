@@ -5,11 +5,11 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import ScrollAnimation from "./ScrollAnimation";
 import { projects, type ProjectCategory } from "@/data/projects";
 
-const CATEGORIES: { label: string; value: ProjectCategory | "Todos" }[] = [
-  { label: "Todos", value: "Todos" },
-  { label: "Aplicación Web", value: "Aplicación Web" },
-  { label: "Desarrollo Web", value: "Desarrollo Web" },
-  { label: "E-commerce", value: "E-commerce" },
+const CATEGORIES: { key: string; value: ProjectCategory | "Todos" }[] = [
+  { key: "projects.categories.all", value: "Todos" },
+  { key: "projects.categories.webApp", value: "Aplicación Web" },
+  { key: "projects.categories.webDev", value: "Desarrollo Web" },
+  { key: "projects.categories.ecommerce", value: "E-commerce" },
 ];
 
 const categoryColor: Record<ProjectCategory, string> = {
@@ -35,7 +35,7 @@ const Projects = () => {
             {t("projects.title")}
           </h2>
           <p className="text-center text-muted-foreground font-sans mb-12 max-w-xl mx-auto text-sm">
-            {filtered.length} proyecto{filtered.length !== 1 ? "s" : ""} · {active === "Todos" ? "todas las categorías" : active}
+            {filtered.length} proyecto{filtered.length !== 1 ? "s" : ""} · {active === "Todos" ? t("projects.categories.all") : t(CATEGORIES.find(c => c.value === active)?.key || "")}
           </p>
         </ScrollAnimation>
 
@@ -52,7 +52,7 @@ const Projects = () => {
                     : "bg-card border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"
                 }`}
               >
-                {cat.label}
+                {t(cat.key)}
               </button>
             ))}
           </div>
@@ -94,7 +94,7 @@ const Projects = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <span className="inline-flex items-center gap-1 text-xs text-primary font-sans font-medium">
-                      Ver detalles <ChevronRight size={12} />
+                      {t("projects.details")} <ChevronRight size={12} />
                     </span>
                   </div>
                 </div>
@@ -102,7 +102,7 @@ const Projects = () => {
                 {/* Content */}
                 <div className="p-5">
                   <span className={`inline-block text-[10px] font-bold font-sans uppercase tracking-wider px-2 py-0.5 rounded-full border mb-3 ${categoryColor[project.category]}`}>
-                    {project.category}
+                    {t(CATEGORIES.find(c => c.value === project.category)?.key || "")}
                   </span>
                   <h3 className="text-sm font-bold text-foreground font-sans line-clamp-2 mb-3 leading-snug">
                     {project.title}
@@ -196,7 +196,7 @@ const Projects = () => {
                   {selected.isFeatured && (
                     <div className="absolute top-4 left-4">
                       <span className="inline-flex items-center gap-1 bg-primary text-primary-foreground text-xs font-bold font-sans px-3 py-1 rounded-full">
-                        <Star size={11} /> Destacado
+                        <Star size={11} /> {t("projects.featured")}
                       </span>
                     </div>
                   )}
@@ -212,7 +212,7 @@ const Projects = () => {
                 <div className="p-6 space-y-5">
                   <div>
                     <span className={`inline-block text-[10px] font-bold font-sans uppercase tracking-wider px-2 py-0.5 rounded-full border mb-2 ${categoryColor[selected.category]}`}>
-                      {selected.category}
+                      {t(CATEGORIES.find(c => c.value === selected.category)?.key || "")}
                     </span>
                     <h3 className="text-lg font-bold text-foreground font-sans leading-snug">
                       {selected.title}
@@ -220,17 +220,17 @@ const Projects = () => {
                   </div>
 
                   <div>
-                    <p className="text-xs font-bold text-primary uppercase tracking-wider font-sans mb-1">Problema</p>
+                    <p className="text-xs font-bold text-primary uppercase tracking-wider font-sans mb-1">{t("projects.problem")}</p>
                     <p className="text-sm text-muted-foreground font-sans leading-relaxed">{selected.problem}</p>
                   </div>
 
                   <div>
-                    <p className="text-xs font-bold text-primary uppercase tracking-wider font-sans mb-1">Solución</p>
+                    <p className="text-xs font-bold text-primary uppercase tracking-wider font-sans mb-1">{t("projects.solution")}</p>
                     <p className="text-sm text-muted-foreground font-sans leading-relaxed">{selected.solution}</p>
                   </div>
 
                   <div>
-                    <p className="text-xs font-bold text-primary uppercase tracking-wider font-sans mb-2">Stack</p>
+                    <p className="text-xs font-bold text-primary uppercase tracking-wider font-sans mb-2">{t("projects.stack")}</p>
                     <div className="flex flex-wrap gap-1.5">
                       {selected.stack.map((tech) => (
                         <span
@@ -244,7 +244,7 @@ const Projects = () => {
                   </div>
 
                   <div>
-                    <p className="text-xs font-bold text-primary uppercase tracking-wider font-sans mb-2">Mi contribución</p>
+                    <p className="text-xs font-bold text-primary uppercase tracking-wider font-sans mb-2">{t("projects.contribution")}</p>
                     <div className="space-y-1">
                       {selected.contribution.split("\n").map((line, i) => (
                         <p key={i} className="text-sm text-muted-foreground font-sans leading-relaxed">
@@ -263,7 +263,7 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         className="btn-primary inline-flex items-center gap-2 text-sm"
                       >
-                        <ExternalLink size={14} /> Ver demo en vivo
+                        <ExternalLink size={14} /> {t("projects.livedemo")}
                       </a>
                     )}
 
@@ -274,7 +274,7 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         className="btn-outline inline-flex items-center gap-2 text-sm"
                       >
-                        <FileText size={14} /> Documentación
+                        <FileText size={14} /> {t("projects.docs")}
                       </a>
                     )}
                   </div>

@@ -83,6 +83,19 @@ const translations: Record<string, Record<Lang, string>> = {
   "projects.p4.name": { es: "Furnarius Eventos", en: "Furnarius Eventos" },
   "projects.p4.category": { es: "Sitio web", en: "Website" },
   "projects.p4.result": { es: "Sitio web institucional con Lovable", en: "Institutional website with Lovable" },
+  "projects.categories.all": { es: "Todos", en: "All" },
+  "projects.categories.webApp": { es: "Aplicación Web", en: "Web App" },
+  "projects.categories.webDev": { es: "Desarrollo Web", en: "Web Development" },
+  "projects.categories.ecommerce": { es: "E-commerce", en: "E-commerce" },
+  "projects.details": { es: "Ver detalles", en: "View details" },
+  "projects.problem": { es: "Problema", en: "Problem" },
+  "projects.solution": { es: "Solución", en: "Solution" },
+  "projects.stack": { es: "Stack", en: "Stack" },
+  "projects.contribution": { es: "Mi contribución", en: "My contribution" },
+  "projects.livedemo": { es: "Ver demo en vivo", en: "View live demo" },
+  "projects.repo": { es: "Ver repositorio", en: "View repository" },
+  "projects.docs": { es: "Documentación", en: "Documentation" },
+  "projects.featured": { es: "Destacado", en: "Featured" },
 
   // Why
   "why.label": { es: "¿POR QUÉ MAFETECH?", en: "WHY MAFETECH?" },
@@ -106,7 +119,7 @@ const translations: Record<string, Record<Lang, string>> = {
   // About
   "about.label": { es: "SOBRE MÍ", en: "ABOUT ME" },
   "about.name": { es: "María Fernanda Moreno", en: "María Fernanda Moreno" },
-  "about.role": { es: "Automation Developer · n8n · AI · React & TypeScript", en: "Automation Developer · n8n · AI · React & TypeScript" },
+  "about.role": { es: "Automation Developer · n8n · AI · Desarrolladora de Software", en: "Automation Developer · n8n · AI · Software Developer" },
   "about.p1": {
     es: "Soy especialista en automatización de procesos e IA, y también desarrollo sitios web y aplicaciones.",
     en: "I specialize in process automation and AI, and I also develop websites and applications.",
@@ -136,6 +149,7 @@ const translations: Record<string, Record<Lang, string>> = {
   "contact.s2": { es: "Todo en Uno", en: "All-in-One" },
   "contact.s3": { es: "Ecosistema Inteligente", en: "Smart Ecosystem" },
   "contact.s4": { es: "Otro / No estoy seguro", en: "Other / Not sure" },
+  "contact.whatsapp": { es: "Hablemos por WhatsApp", en: "Let's talk on WhatsApp" },
 
   // Footer
   "footer.desc": {
