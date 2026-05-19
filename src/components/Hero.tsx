@@ -1,4 +1,4 @@
-﻿import { ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
 
@@ -15,7 +15,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px]" />
 
-      <div className="relative container mx-auto px-4 md:px-8 text-center max-w-4xl">
+      <div className="relative container mx-auto px-4 md:px-8 text-center max-w-4xl pt-16 md:pt-20">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
