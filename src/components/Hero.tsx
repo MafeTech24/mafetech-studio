@@ -20,9 +20,9 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="label-caps mb-6"
+          className="label-caps mb-6 py-4 md:leading-loose"
         >
-          {t("hero.label")}
+          AUTOMATIZACIÓN · AHORRO DE TIEMPO · WEBS A MEDIDA · MÁS CLIENTES · PROCESOS DIGITALES · INTEGRACIÓN DE SISTEMAS
         </motion.p>
 
         <motion.h1
