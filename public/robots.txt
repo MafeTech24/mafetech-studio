@@ -1,16 +1,7 @@
 User-agent: *
 Allow: /
 
-User-agent: GPTBot
+User-agent: OAI-SearchBot
 Allow: /
 
-User-agent: Claude-Web
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-Sitemap: https://mafetech.net/sitemap.xml
+Sitemap: https://www.mafetech.net/sitemap.xml

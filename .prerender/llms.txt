@@ -1,0 +1,18 @@
+# MafeTech
+
+> Diseño web, SEO, estrategia digital y automatización de procesos. Estudio de María Fernanda Moreno, desarrolladora web en Córdoba, Argentina. Trabajo remoto.
+
+## Servicios
+- Diseño y desarrollo de sitios web, tiendas online y páginas de servicios.
+- Optimización de contenido y estructura para buscadores y herramientas de IA.
+- Planificación de marketing digital a medida.
+- Automatización de tareas e integración de herramientas.
+
+## Sitio
+- [Inicio](https://www.mafetech.net/)
+- [Servicios](https://www.mafetech.net/#servicios)
+- [Proyectos](https://www.mafetech.net/#proyectos)
+- [Sobre mí](https://www.mafetech.net/#sobre-mi)
+- [Preguntas frecuentes](https://www.mafetech.net/#preguntas)
+- [Contacto](https://www.mafetech.net/#contacto)
+

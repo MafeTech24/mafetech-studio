@@ -1,12 +1,9 @@
 import { Linkedin, MessageSquare } from "lucide-react";
+import BrandMark from "./BrandMark";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
   const { t } = useLanguage();
-
-  const scrollTo = (href: string) => {
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-  };
 
   const navLinks = [
     { href: "#inicio", label: t("nav.home") },
@@ -22,15 +19,10 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto mb-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <span className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-xs">
-                MF
-              </span>
-              <span className="text-foreground font-sans font-bold text-lg">
-                Mafe<span className="text-primary">Tech</span>
-              </span>
+            <div className="mb-4">
+              <BrandMark />
             </div>
-            <p className="text-muted-foreground text-sm font-sans leading-relaxed">{t("footer.desc")}</p>
+            <p className="text-muted-foreground text-sm font-sans">{t("footer.desc")}</p>
           </div>
 
           {/* Nav */}
@@ -38,13 +30,13 @@ const Footer = () => {
             <h4 className="text-foreground font-sans font-semibold text-sm mb-4">{t("footer.nav")}</h4>
             <div className="space-y-2">
               {navLinks.map((link) => (
-                <button
+                <a
                   key={link.href}
-                  onClick={() => scrollTo(link.href)}
+                  href={link.href}
                   className="block text-muted-foreground hover:text-primary transition-colors text-sm font-sans"
                 >
                   {link.label}
-                </button>
+                </a>
               ))}
             </div>
           </div>
@@ -54,14 +46,13 @@ const Footer = () => {
             <h4 className="text-foreground font-sans font-semibold text-sm mb-4">{t("footer.contact")}</h4>
             <div className="flex gap-4 mb-4">
               <a href="https://www.linkedin.com/in/mafetechdev/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
-                <Linkedin size={18} />
+                <Linkedin size={18} className="text-[color:var(--icon-accent)]" aria-hidden="true" />
               </a>
 
-              <a href="https://wa.me/543512005107" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="WhatsApp">
+              <a href="https://wa.me/5493518103272" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="WhatsApp">
                 <MessageSquare size={18} />
               </a>
             </div>
-            <p className="text-muted-foreground text-xs font-sans">mafe4024@gmail.com</p>
           </div>
         </div>
 

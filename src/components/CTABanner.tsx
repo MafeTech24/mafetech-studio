@@ -3,7 +3,7 @@ import ScrollAnimation from "./ScrollAnimation";
 
 const CTABanner = () => {
   const { t } = useLanguage();
-  const whatsappUrl = "https://wa.me/543512005107?text=Hola%20Mafe%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20tus%20servicios";
+  const whatsappUrl = "https://wa.me/5493518103272?text=Hola%20Mafe%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20tus%20servicios";
 
   return (
     <section className="py-24 md:py-32 relative overflow-hidden">

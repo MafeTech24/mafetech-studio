@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,47 +6,49 @@
 
 @layer base {
   :root {
-    --background: 222 20% 7%;
+    --background: 250 27% 6%;
     --foreground: 0 0% 100%;
 
-    --card: 222 22% 16%;
+    --card: 254 22% 15%;
     --card-foreground: 0 0% 100%;
 
-    --popover: 222 22% 16%;
+    --popover: 254 22% 15%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 165 100% 42%;
-    --primary-foreground: 222 20% 7%;
+    --primary: 265 100% 76%;
+    --primary-foreground: 250 27% 6%;
 
-    --secondary: 222 22% 16%;
+    --secondary: 254 22% 15%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 222 22% 16%;
-    --muted-foreground: 215 23% 62%;
+    --muted: 254 22% 15%;
+    --muted-foreground: 253 19% 72%;
 
-    --accent: 165 100% 42%;
-    --accent-foreground: 222 20% 7%;
+    --accent: 265 100% 76%;
+    --control-accent: #713bc8;
+    --icon-accent: #a36af8;
+    --accent-foreground: 250 27% 6%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 217 19% 27%;
-    --input: 217 19% 27%;
-    --ring: 165 100% 42%;
+    --border: 256 19% 29%;
+    --input: 256 19% 29%;
+    --ring: 265 100% 76%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 222 20% 7%;
+    --sidebar-background: 250 27% 6%;
     --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 165 100% 42%;
-    --sidebar-primary-foreground: 222 20% 7%;
-    --sidebar-accent: 222 22% 16%;
+    --sidebar-primary: 265 100% 76%;
+    --sidebar-primary-foreground: 250 27% 6%;
+    --sidebar-accent: 254 22% 15%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 217 19% 27%;
-    --sidebar-ring: 165 100% 42%;
+    --sidebar-border: 256 19% 29%;
+    --sidebar-ring: 265 100% 76%;
 
     /* Custom tokens */
-    --glow-primary: 0 0 30px hsl(165 100% 42% / 0.3);
+    --glow-primary: 0 0 30px hsl(265 100% 76% / 0.3);
     --surface-elevated: 222 25% 12%;
   }
 }
@@ -66,23 +68,50 @@
 }
 
 @layer components {
+  .copy-size {
+    @apply text-lg md:text-xl;
+  }
+
+  .card-description {
+    @apply text-base md:text-[1.0625rem] leading-7;
+  }
+
   .section-divider {
     @apply w-full h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent;
   }
 
   .card-glow {
-    @apply transition-all duration-300;
+    transition: translate 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
   }
-  .card-glow:hover {
-    box-shadow: 0 0 30px hsl(165 100% 42% / 0.15), 0 0 60px hsl(165 100% 42% / 0.05);
+
+  .card-glow-icon {
+    transition: translate 300ms ease, scale 300ms ease;
+  }
+
+  @media (hover: hover) {
+    .card-glow:hover {
+      border-color: #c8adffb3;
+      box-shadow: 0 0 22px #c8adff40, 0 14px 26px #0e0f1480;
+    }
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .card-glow:hover {
+      translate: 0 -4px;
+    }
+
+    .card-glow:hover .card-glow-icon {
+      translate: 0 -2px;
+      scale: 1.1;
+    }
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-emerald-300;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-fuchsia-300;
   }
 
   .btn-primary {
-    @apply bg-primary text-primary-foreground font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_hsl(165_100%_42%/0.4)] hover:scale-105;
+    @apply bg-gradient-to-r from-[#6531c5] to-[#8832bc] text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_hsl(265_100%_76%/0.4)] hover:scale-105;
   }
 
   .btn-outline {
@@ -97,8 +126,22 @@
 @layer utilities {
   .grid-bg {
     background-image: 
-      linear-gradient(hsl(165 100% 42% / 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(165 100% 42% / 0.03) 1px, transparent 1px);
+      linear-gradient(hsl(265 100% 76% / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(265 100% 76% / 0.03) 1px, transparent 1px);
     background-size: 60px 60px;
+  }
+}
+
+[id] {
+  scroll-margin-top: 5rem;
+}
+
+#inicio {
+  scroll-margin-top: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }

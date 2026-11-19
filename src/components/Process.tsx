@@ -1,4 +1,4 @@
-﻿import { Search, FileText, Rocket, HeadphonesIcon } from "lucide-react";
+import { Search, FileText, Rocket, HeadphonesIcon } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import ScrollAnimation from "./ScrollAnimation";
 
@@ -16,7 +16,7 @@ const Process = () => {
     <section id="proceso" className="py-24 md:py-32">
       <div className="container mx-auto px-4 md:px-8">
         <ScrollAnimation>
-          <h2 className="text-3xl md:text-5xl font-bold text-center text-foreground mb-16">
+          <h2 className="text-3xl md:text-5xl font-medium text-center text-foreground text-balance mb-12">
             {t("process.title")}
           </h2>
         </ScrollAnimation>
@@ -25,15 +25,18 @@ const Process = () => {
           {steps.map((step, i) => (
             <ScrollAnimation key={step.num} delay={i * 0.12}>
               <div className="text-center p-6">
-                <div className="w-14 h-14 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
-                  <step.icon className="text-primary" size={22} />
+                <div className="size-[3.75rem] md:size-16 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
+                  <step.icon className="size-6 md:size-7 text-[color:var(--icon-accent)]" aria-hidden="true" />
                 </div>
-                <span className="text-primary font-mono text-xs font-bold">{step.num}</span>
-                <h3 className="text-lg font-bold text-foreground mt-2 mb-2 font-sans">{t(step.titleKey)}</h3>
-                <p className="text-muted-foreground text-sm font-sans">{t(step.descKey)}</p>
+                <span className="text-primary font-mono text-sm md:text-base font-semibold">{step.num}</span>
+                <h3 className="font-serif text-xl md:text-[1.375rem] font-medium leading-snug text-balance text-foreground my-2">{t(step.titleKey)}</h3>
+                <p className="text-muted-foreground card-description font-sans">{t(step.descKey)}</p>
               </div>
             </ScrollAnimation>
           ))}
+        </div>
+        <div className="text-center mt-10">
+          <a className="btn-outline inline-block px-9 py-3.5 text-[1.0625rem]" href="#contacto">{t("process.cta")}</a>
         </div>
       </div>
     </section>

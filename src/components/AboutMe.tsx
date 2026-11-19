@@ -1,14 +1,8 @@
-import { Linkedin, Shield, Server, BarChart3, FileText } from "lucide-react";
+import { Linkedin } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import ScrollAnimation from "./ScrollAnimation";
 
 
-const bullets = [
-  { icon: Shield, key: "why.b1" },
-  { icon: Server, key: "why.b2" },
-  { icon: BarChart3, key: "why.b3" },
-  { icon: FileText, key: "why.b4" },
-];
 
 const AboutMe = () => {
   const { t } = useLanguage();
@@ -20,27 +14,17 @@ const AboutMe = () => {
           <ScrollAnimation>
             <div>
               <p className="label-caps mb-4">{t("about.label")}</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">{t("about.name")}</h2>
-              <p className="text-primary font-sans font-medium mb-6">{t("about.role")}</p>
-              <p className="text-muted-foreground font-sans text-sm leading-relaxed mb-4">{t("about.p1")}</p>
-              <p className="text-muted-foreground font-sans text-sm leading-relaxed mb-8">{t("about.p2")}</p>
+              <h2 className="mb-4 font-serif text-3xl font-normal tracking-tight text-foreground md:text-5xl">{t("about.name")}</h2>
+              <p className="font-sans text-[1.0625rem] md:text-lg leading-7 text-muted-foreground mb-4">{t("about.p1")}</p>
+              <p className="font-sans text-[1.0625rem] md:text-lg leading-7 text-muted-foreground mb-8">{t("about.p2")}</p>
 
-              <div className="space-y-4 mb-8">
-                {bullets.map((b) => (
-                  <div key={b.key} className="flex items-start gap-4">
-                    <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                      <b.icon className="text-primary" size={18} />
-                    </div>
-                    <p className="text-muted-foreground font-sans text-sm leading-relaxed">{t(b.key)}</p>
-                  </div>
-                ))}
-              </div>
-
-
+              <p className="font-sans text-[1.0625rem] md:text-lg leading-7 text-muted-foreground mb-4">{t("about.p3")}</p>
+              <p className="font-sans text-[1.0625rem] md:text-lg leading-7 text-muted-foreground mb-4">{t("about.p4")}</p>
+              <p className="font-sans text-[1.0625rem] md:text-lg leading-7 text-muted-foreground mb-8">{t("about.p5")}</p>
 
               <div className="flex gap-4">
                 <a href="https://www.linkedin.com/in/mafetechdev/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
-                  <Linkedin size={20} />
+                  <Linkedin size={20} className="text-[color:var(--icon-accent)]" aria-hidden="true" />
                 </a>
 
               </div>
@@ -50,8 +34,11 @@ const AboutMe = () => {
           <ScrollAnimation delay={0.2}>
             <div className="sticky top-8 max-w-[85%] mx-auto md:max-w-none">
               <img 
-                src="/mafe-moreno.png" 
-                alt="María Fernanda Moreno — Automation Developer" 
+                src="/sobreMi3.jpg" 
+                alt="María Fernanda Moreno" 
+                width={1200}
+                height={1500}
+                loading="lazy"
                 className="w-full h-auto object-contain rounded-2xl transition-transform duration-500 hover:scale-105"
               />
             </div>

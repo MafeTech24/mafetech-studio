@@ -1,5 +1,14 @@
-﻿import { createRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 
-createRoot(document.getElementById("root")!).render(<App />);
+const root = document.getElementById("root")!;
+const lang = /^\/en\/?$/.test(window.location.pathname) ? "en" : "es";
+document.documentElement.lang = lang;
+const app = <App lang={lang} />;
+
+if (root.hasChildNodes()) {
+  hydrateRoot(root, app);
+} else {
+  createRoot(root).render(app);
+}

@@ -1,30 +1,89 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, FileText, X, Star, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import ScrollAnimation from "./ScrollAnimation";
+import AutomationCases from "./AutomationCases";
 import { projects, type ProjectCategory } from "@/data/projects";
+import tonio from "@/assets/tonioMiniMarket.jpg";
+import furniture from "@/assets/amoblamientosElReyNorte.jpg";
+import lawOffice from "@/assets/cristianMartinez.png";
+import abyco from "@/assets/abyco.jpg";
+import silviaYJose from "@/assets/silviayJose.jpg";
 
-const CATEGORIES: { key: string; value: ProjectCategory | "Todos" }[] = [
+import fundacion from "@/assets/fundacion-por-un-mundo-mejor.jpg";
+import anaParis from "@/assets/ana-paris-social.png";
+import anabellaBrasca from "@/assets/anabella-brasca.jpg";
+
+const clients = [
+  { title: "Fundación Por Un Mundo Mejor", url: "https://maqueta-fundacion-completo.vercel.app/", image: fundacion, showFullImage: true },
+  { title: "Tonio MiniMarket", url: "https://www.toniominimarket.com.ar/", image: tonio, showFullImage: true },
+  { title: "Lic. Ana Paris", url: "https://www.licenciadaanaparis.com/", image: anaParis, showFullImage: true },
+  { title: "Dra. Anabella Brasca", url: "https://anibrasca4.vercel.app/", image: anabellaBrasca, showFullImage: true },
+  { title: "Amoblamientos El Rey del Norte", url: "https://amoblamientoselreydelnorte.vercel.app/", image: furniture },
+  { title: "Estudio Jurídico Dr. Cristian Martínez", url: "https://cristianmartinez-abogado.vercel.app/", image: lawOffice },
+  { title: "AB&CO · Abogados y Contadores", url: "https://abogadosycontadores-asesoriaintegra.vercel.app/", image: abyco },
+  { title: "Silvia Mariella y José Tomás", url: "https://silviamariella-josetomas.vercel.app/", image: silviaYJose },
+];
+
+const demoProjects = [
+  "emily-hair-studio-web-app",
+  "patitas-felices-grooming-web-app",
+  "artesaniaVeta",
+  "furnariusEventos",
+  "arquetipo-ia",
+  "pretty-lady-boutique",
+].flatMap((id) => projects.filter((project) => project.id === id));
+
+type ProjectFilter = ProjectCategory | "Todos" | "Automatizaciones";
+const automationHash = "#casos-automatizacion";
+
+const CATEGORIES: { key: string; value: ProjectFilter }[] = [
   { key: "projects.categories.all", value: "Todos" },
   { key: "projects.categories.webApp", value: "Aplicación Web" },
   { key: "projects.categories.webDev", value: "Desarrollo Web" },
   { key: "projects.categories.ecommerce", value: "E-commerce" },
+  { key: "projects.categories.automation", value: "Automatizaciones" },
 ];
 
 const categoryColor: Record<ProjectCategory, string> = {
   "Aplicación Web": "bg-violet-500/20 text-violet-400 border-violet-500/30",
-  "Desarrollo Web": "bg-cyan-500/20 text-cyan-400 border-cyan-500/30",
-  "E-commerce": "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
+  "Desarrollo Web": "bg-indigo-500/20 text-indigo-300 border-indigo-500/30",
+  "E-commerce": "bg-purple-500/20 text-purple-300 border-purple-500/30",
 };
 
 const Projects = () => {
   const { t } = useLanguage();
-  const [active, setActive] = useState<"Todos" | ProjectCategory>("Todos");
+  const [view, setView] = useState<"clients" | "demos">("clients");
+  const [active, setActive] = useState<ProjectFilter>("Todos");
   const [selected, setSelected] = useState<(typeof projects)[0] | null>(null);
 
-  const filtered =
-    active === "Todos" ? projects : projects.filter((p) => p.category === active);
+  useEffect(() => {
+    const syncAutomationLink = () => {
+      if (window.location.hash === automationHash) {
+        setView("demos");
+        setActive("Automatizaciones");
+      }
+    };
+
+    syncAutomationLink();
+    window.addEventListener("hashchange", syncAutomationLink);
+    return () => window.removeEventListener("hashchange", syncAutomationLink);
+  }, []);
+
+  useEffect(() => {
+    if (view === "demos" && active === "Automatizaciones" && window.location.hash === automationHash) {
+      document.getElementById("casos-automatizacion")?.scrollIntoView();
+    }
+  }, [view, active]);
+
+  const clearAutomationLink = () => {
+    if (window.location.hash === automationHash) {
+      window.history.replaceState(window.history.state, "", "#proyectos");
+    }
+  };
+
+  const filtered = demoProjects.filter((project) => active === "Todos" || project.category === active);
 
   return (
     <section id="proyectos" className="py-24 md:py-32">
@@ -34,21 +93,71 @@ const Projects = () => {
           <h2 className="text-3xl md:text-5xl font-bold text-center text-foreground mb-4">
             {t("projects.title")}
           </h2>
-          <p className="text-center text-muted-foreground font-sans mb-12 max-w-xl mx-auto text-sm">
-            {filtered.length} proyecto{filtered.length !== 1 ? "s" : ""} · {active === "Todos" ? t("projects.categories.all") : t(CATEGORIES.find(c => c.value === active)?.key || "")}
+          <p className="text-center text-muted-foreground font-sans mb-12 max-w-2xl mx-auto copy-size">
+            {t("projects.intro")}
           </p>
         </ScrollAnimation>
 
+        <div className="flex flex-wrap justify-center gap-3 mb-10">
+          {(["clients", "demos"] as const).map((option) => (
+            <button
+              key={option}
+              type="button"
+              aria-pressed={view === option}
+              onClick={() => {
+                if (option === "clients") {
+                  clearAutomationLink();
+                  setActive("Todos");
+                }
+                setView(option);
+              }}
+              className={view === option ? "btn-primary" : "btn-outline"}
+            >
+              {t(`projects.${option}`)}
+            </button>
+          ))}
+        </div>
+
+        {view === "clients" ? (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-7xl mx-auto">
+            {clients.map((client) => (
+              <article key={client.title} className="card-glow bg-card border border-border rounded-xl overflow-hidden flex flex-col">
+                {client.image && (
+                  <img
+                    src={client.image}
+                    alt={client.title}
+                    loading="lazy"
+                    className={`w-full h-44 ${client.showFullImage ? "bg-background object-contain" : "object-cover object-top"}`}
+                  />
+                )}
+                <div className="p-5 flex-1 flex flex-col gap-3">
+                  <h3 className="text-xl font-medium">{client.title}</h3>
+                  {client.url && (
+                    <a href={client.url} target="_blank" rel="noopener noreferrer" className="text-primary text-sm mt-auto hover:underline">
+                      {t("projects.visit")} <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <>
         {/* Filter tabs */}
         <ScrollAnimation delay={0.1}>
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
+          <div id="casos-automatizacion" className="flex flex-wrap justify-center gap-2 mb-12">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat.value}
-                onClick={() => setActive(cat.value)}
+                type="button"
+                aria-pressed={active === cat.value}
+                onClick={() => {
+                  if (cat.value !== "Automatizaciones") clearAutomationLink();
+                  setActive(cat.value);
+                }}
                 className={`px-5 py-2 rounded-full text-sm font-sans font-medium border transition-all duration-200 ${
                   active === cat.value
-                    ? "bg-primary text-primary-foreground border-primary shadow-[0_0_16px_hsl(165_100%_42%/0.35)]"
+                    ? "bg-primary text-primary-foreground border-primary shadow-[0_0_16px_hsl(265_100%_76%/0.35)]"
                     : "bg-card border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"
                 }`}
               >
@@ -58,7 +167,7 @@ const Projects = () => {
           </div>
         </ScrollAnimation>
 
-        {/* Grid */}
+        {active !== "Automatizaciones" && (
         <motion.div
           layout
           className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-7xl mx-auto"
@@ -73,7 +182,7 @@ const Projects = () => {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.25, delay: i * 0.04 }}
                 onClick={() => setSelected(project)}
-                className="group relative bg-card border border-border rounded-xl overflow-hidden cursor-pointer hover:border-primary/40 hover:shadow-[0_0_30px_hsl(165_100%_42%/0.08)] transition-all duration-300"
+                className="group card-glow relative bg-card border border-border rounded-xl overflow-hidden cursor-pointer"
               >
                 {/* Featured badge */}
                 {project.isFeatured && (
@@ -89,7 +198,7 @@ const Projects = () => {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -135,7 +244,7 @@ const Projects = () => {
                         onClick={(e) => e.stopPropagation()}
                         className="inline-flex items-center gap-1 text-xs text-primary hover:text-primary/80 font-sans transition-colors"
                       >
-                        <ExternalLink size={12} /> Demo
+                        <ExternalLink size={12} /> {t("projects.livedemo")}
                       </a>
                     )}
 
@@ -156,6 +265,12 @@ const Projects = () => {
             ))}
           </AnimatePresence>
         </motion.div>
+        )}
+        {(active === "Todos" || active === "Automatizaciones") && (
+          <AutomationCases separated={active === "Todos"} />
+        )}
+          </>
+        )}
       </div>
 
       {/* ── Detail Modal ── */}
@@ -221,12 +336,12 @@ const Projects = () => {
 
                   <div>
                     <p className="text-xs font-bold text-primary uppercase tracking-wider font-sans mb-1">{t("projects.problem")}</p>
-                    <p className="text-sm text-muted-foreground font-sans leading-relaxed">{selected.problem}</p>
+                    <p className="card-description text-muted-foreground font-sans">{selected.problem}</p>
                   </div>
 
                   <div>
                     <p className="text-xs font-bold text-primary uppercase tracking-wider font-sans mb-1">{t("projects.solution")}</p>
-                    <p className="text-sm text-muted-foreground font-sans leading-relaxed">{selected.solution}</p>
+                    <p className="card-description text-muted-foreground font-sans">{selected.solution}</p>
                   </div>
 
                   <div>
@@ -247,7 +362,7 @@ const Projects = () => {
                     <p className="text-xs font-bold text-primary uppercase tracking-wider font-sans mb-2">{t("projects.contribution")}</p>
                     <div className="space-y-1">
                       {selected.contribution.split("\n").map((line, i) => (
-                        <p key={i} className="text-sm text-muted-foreground font-sans leading-relaxed">
+                        <p key={i} className="card-description text-muted-foreground font-sans">
                           {line}
                         </p>
                       ))}
