@@ -10,12 +10,12 @@ const cards = [
 
 const ecosystemCopy = {
   es: {
-    title: "Tu web,  tu ecosistema digital",
+    title: "Tu web, tu ecosistema digital",
     body: (
       <>
         <p>{"Para un "}<strong>profesional, emprendedor o comerciante</strong>{", tener presencia digital es fundamental para facilitar que las personas te encuentren, entiendan qué ofrecés y sepan cómo dar el próximo paso. Pueden descubrirte en redes, en un buscador o al consultar una herramienta de inteligencia artificial. Tu web reúne TODO lo que necesitan para conocerte mejor, ver tus trabajos, explorar tus servicios y contactarte."}</p>
-        <p>{"Cada canal cumple una función. Tus redes te ayudan a mostrar lo que ofreces y conversar con tu público. Desde ellas podes llevar a las personas a tu web para ampliar la información, pedir un turno, reservar o escribirte por WhatsApp. Y desde tu sitio también pueden ir a tus redes y seguir en contacto con vos."}</p>
-        <p>{"Eso es un "}<strong>ecosistema digital</strong>{". Según lo que necesite tu proyecto, te ayudo a conectar tu web, tus redes y tus canales de atención. Si recibís muchas consultas o repetís los mismos pasos todos los días, también podemos "}<strong>automatizar</strong>{" parte de ese recorrido. Y si necesitas definir a quién querés llegar, qué comunicar y en qué canales enfocarte, puedo ayudarte a armar un "}<strong>plan de marketing digital personalizado</strong>{"."}</p>
+        <p>{"Cada canal cumple una función. Tus redes te ayudan a mostrar lo que ofrecés y conversar con tu público. Desde ellas podés llevar a las personas a tu web para ampliar la información, pedir un turno, reservar o escribirte por WhatsApp. Y desde tu sitio también pueden ir a tus redes y seguir en contacto con vos."}</p>
+        <p>{"Eso es un "}<strong>ecosistema digital</strong>{". Según lo que necesite tu proyecto, te ayudo a conectar tu web, tus redes y tus canales de atención. Si recibís muchas consultas o repetís los mismos pasos todos los días, también podemos "}<strong>automatizar</strong>{" parte de ese recorrido. Y si necesitás definir a quién querés llegar, qué comunicar y en qué canales enfocarte, puedo ayudarte a armar un "}<strong>plan de marketing digital personalizado</strong>{"."}</p>
       </>
     ),
   },

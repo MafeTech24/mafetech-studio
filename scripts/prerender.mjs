@@ -8,7 +8,7 @@ const indexable = process.argv.includes("--indexable");
 const pages = {
   es: {
     path: "",
-    title: "MafeTech | Diseño web a medida y SEO en Córdoba",
+    title: "MafeTech | Diseño web, SEO y estrategia digital",
     description: "Diseño sitios web personalizados y trabajo su posicionamiento en buscadores y herramientas de IA. También ofrezco automatización y estrategia digital desde Córdoba.",
     locale: "es_AR",
     alternateLocale: "en_US",
@@ -16,7 +16,7 @@ const pages = {
   },
   en: {
     path: "en/",
-    title: "MafeTech | Custom Web Design and SEO in Córdoba",
+    title: "MafeTech | Web design, SEO, and digital strategy",
     description: "I design custom websites and improve their visibility in search engines and AI tools. I also offer automation and digital strategy from Córdoba, Argentina.",
     locale: "en_US",
     alternateLocale: "es_AR",
@@ -46,6 +46,11 @@ for (const [lang, page] of Object.entries(pages)) {
         name: "MafeTech",
         url: origin,
         logo: origin + "mafetech-social.jpg",
+        telephone: "+5493518103272",
+        sameAs: [
+          "https://www.instagram.com/mafetech4.0/",
+          "https://www.facebook.com/profile.php?id=61596717633213",
+        ],
         founder: { "@id": founderId },
         location: {
           "@type": "Place",
@@ -100,4 +105,3 @@ for (const [lang, page] of Object.entries(pages)) {
   await mkdir(directory, { recursive: true });
   await writeFile(new URL("index.html", directory), html);
 }
-

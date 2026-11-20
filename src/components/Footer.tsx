@@ -1,6 +1,7 @@
-import { Linkedin, MessageSquare } from "lucide-react";
+import { Linkedin, Instagram, Facebook, MessageSquare, Phone } from "lucide-react";
 import BrandMark from "./BrandMark";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { CONTACT, whatsappLink } from "@/data/contact";
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -12,6 +13,9 @@ const Footer = () => {
     { href: "#proceso", label: t("nav.process") },
     { href: "#contacto", label: t("nav.contact") },
   ];
+
+  const iconLink = "text-muted-foreground hover:text-primary transition-colors";
+  const iconClass = "text-[color:var(--icon-accent)]";
 
   return (
     <footer className="border-t border-border py-16">
@@ -44,13 +48,21 @@ const Footer = () => {
           {/* Contact */}
           <div>
             <h4 className="text-foreground font-sans font-semibold text-sm mb-4">{t("footer.contact")}</h4>
-            <div className="flex gap-4 mb-4">
-              <a href="https://www.linkedin.com/in/mafetechdev/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
-                <Linkedin size={18} className="text-[color:var(--icon-accent)]" aria-hidden="true" />
+            <div className="flex items-center gap-4">
+              <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer" className={iconLink} aria-label="LinkedIn">
+                <Linkedin size={18} className={iconClass} aria-hidden="true" />
               </a>
-
-              <a href="https://wa.me/5493518103272" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="WhatsApp">
-                <MessageSquare size={18} />
+              <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" className={iconLink} aria-label="Instagram">
+                <Instagram size={18} className={iconClass} aria-hidden="true" />
+              </a>
+              <a href={CONTACT.facebook} target="_blank" rel="noopener noreferrer" className={iconLink} aria-label="Facebook">
+                <Facebook size={18} className={iconClass} aria-hidden="true" />
+              </a>
+              <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className={iconLink} aria-label="WhatsApp">
+                <MessageSquare size={18} className={iconClass} aria-hidden="true" />
+              </a>
+              <a href={CONTACT.phoneHref} className={iconLink} aria-label={`${t("contact.call")}: ${CONTACT.phoneDisplay}`}>
+                <Phone size={18} className={iconClass} aria-hidden="true" />
               </a>
             </div>
           </div>
